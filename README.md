@@ -1,0 +1,57 @@
+# pi-extensions
+
+Pi coding agent の任意拡張をまとめるリポジトリです。Pi本体で解決できる機能は重複実装せず、実運用で確認できた具体的な不足だけを小さな拡張として補います。
+
+## 拡張
+
+| 拡張 | 概要 |
+| --- | --- |
+| [`done-guard`](extensions/done-guard/README.md) | 指示書が指定した出力ファイルの最終行が `DONE` になるまで、Piが終わるのを2回まで差し戻す |
+
+## インストール
+
+Piのパッケージとして、リポジトリごと入れます。
+
+```bash
+pi install git:github.com/unitea1992/pi-extensions
+```
+
+タグやコミットを固定する場合は `@<ref>` を付けます。
+
+```bash
+pi install git:github.com/unitea1992/pi-extensions@v0.1.0
+```
+
+拡張ごとに選ぶ場合は、`~/.pi/agent/settings.json` の `packages` をオブジェクト形式にして `extensions` で絞ります（Pi の packages 文書の「Select package resources」）。
+
+```json
+{
+  "packages": [
+    {
+      "source": "git:github.com/unitea1992/pi-extensions",
+      "extensions": ["extensions/done-guard/src/index.ts"]
+    }
+  ]
+}
+```
+
+`pi config` でも有効・無効を切り替えられます。更新は `pi update --extensions`、削除は `pi remove git:github.com/unitea1992/pi-extensions` です。
+
+試すだけなら、設定に書かず1回だけ読み込めます。
+
+```bash
+pi -e git:github.com/unitea1992/pi-extensions
+```
+
+## 開発
+
+```bash
+bun install --frozen-lockfile
+bun run check
+```
+
+詳しくは [CONTRIBUTING.md](CONTRIBUTING.md)、脆弱性の報告は [SECURITY.md](SECURITY.md) を見てください。
+
+## ライセンス
+
+MIT

@@ -1,0 +1,12 @@
+{
+	"name": "pi-done-guard",
+	"version": "0.1.0",
+	"description": "Pi extension: block settling until the output file named in the task ends with a DONE line",
+	"license": "MIT",
+	"type": "module",
+	"main": "./src/index.ts",
+	"files": ["src", "README.md", "LICENSE"],
+	"pi": {
+		"extensions": ["./src/index.ts"]
+	}
+}
