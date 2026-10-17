@@ -45,7 +45,7 @@ export function preToolUseCommands(path: string, tool: string): HookCommand[] {
 	const out: HookCommand[] = [];
 	for (const g of groups) {
 		const matcher = g?.matcher ?? ""; // 省いた matcher は全部に当たる（Claude Code と同じ）
-		if (typeof matcher !== "string" || !Array.isArray(g.hooks) || !matchTool(matcher, tool)) continue;
+		if (typeof matcher !== "string" || !Array.isArray(g?.hooks) || !matchTool(matcher, tool)) continue;
 		for (const h of g.hooks) {
 			if (h?.type !== "command" || typeof h.command !== "string") continue;
 			const sec = typeof h.timeout === "number" && h.timeout > 0 ? h.timeout : DEFAULT_TIMEOUT_SECONDS;

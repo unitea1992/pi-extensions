@@ -41,10 +41,10 @@ describe("hook-guards", () => {
 		expect(result).toEqual({ block: true, reason: "名前で止めないでください" });
 	});
 
-	test("matcher を省いたグループは全部のツールに当てる", async () => {
+	test("matcher を省いたグループは全部のツールに当て、壊れたグループは飛ばす", async () => {
 		await writeFile(
 			join(dir, "hook.json"),
-			JSON.stringify({ hooks: { PreToolUse: [{ hooks: [{ type: "command", command: DENY }] }] } }),
+			JSON.stringify({ hooks: { PreToolUse: [null, { hooks: [{ type: "command", command: DENY }] }] } }),
 		);
 		expect((await load()({ toolName: "write", input: {} }, ctx(dir)))?.block).toBe(true);
 	});
