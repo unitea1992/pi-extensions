@@ -15,6 +15,10 @@
       "name": "pi-done-guard",
       "version": "0.1.0",
     },
+    "extensions/hook-guards": {
+      "name": "pi-hook-guards",
+      "version": "0.1.0",
+    },
     "extensions/tool-call-text-guard": {
       "name": "pi-tool-call-text-guard",
       "version": "0.1.0",
@@ -272,6 +276,8 @@
     "path-key": ["path-key@3.1.1", "", {}, "sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q=="],
 
     "pi-done-guard": ["pi-done-guard@workspace:extensions/done-guard"],
+
+    "pi-hook-guards": ["pi-hook-guards@workspace:extensions/hook-guards"],
 
     "pi-tool-call-text-guard": ["pi-tool-call-text-guard@workspace:extensions/tool-call-text-guard"],
 
