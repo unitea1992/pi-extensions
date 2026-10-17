@@ -1,0 +1,12 @@
+{
+	"name": "pi-hook-guards",
+	"version": "0.1.0",
+	"description": "Pi extension: run Claude Code PreToolUse hooks before each tool and block denied calls without ending the turn",
+	"license": "MIT",
+	"type": "module",
+	"main": "./src/index.ts",
+	"files": ["src", "README.md", "LICENSE"],
+	"pi": {
+		"extensions": ["./src/index.ts"]
+	}
+}

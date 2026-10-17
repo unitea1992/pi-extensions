@@ -8,6 +8,7 @@ Pi coding agent の任意拡張をまとめるリポジトリです。Pi本体�
 | --- | --- |
 | [`done-guard`](extensions/done-guard/README.md) | 指示書が指定した出力ファイルの最終行が `DONE` になるまで、Piが終わるのを2回まで差し戻す |
 | [`tool-call-text-guard`](extensions/tool-call-text-guard/README.md) | ツールの呼び出しが実行されず本文に文字として出たまま終わろうとしたとき、2回まで差し戻す |
+| [`hook-guards`](extensions/hook-guards/README.md) | Claude Code の PreToolUse のフックをツールの前に流し、拒否なら止める。pi-hooks と違い、拒否のあとも Pi は止まらずに続ける |
 
 ## インストール
 
