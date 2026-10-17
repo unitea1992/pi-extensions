@@ -44,7 +44,8 @@ export function preToolUseCommands(path: string, tool: string): HookCommand[] {
 	if (!Array.isArray(groups)) return [];
 	const out: HookCommand[] = [];
 	for (const g of groups) {
-		if (typeof g?.matcher !== "string" || !Array.isArray(g.hooks) || !matchTool(g.matcher, tool)) continue;
+		const matcher = g?.matcher ?? ""; // 省いた matcher は全部に当たる（Claude Code と同じ）
+		if (typeof matcher !== "string" || !Array.isArray(g.hooks) || !matchTool(matcher, tool)) continue;
 		for (const h of g.hooks) {
 			if (h?.type !== "command" || typeof h.command !== "string") continue;
 			const sec = typeof h.timeout === "number" && h.timeout > 0 ? h.timeout : DEFAULT_TIMEOUT_SECONDS;
@@ -54,8 +55,9 @@ export function preToolUseCommands(path: string, tool: string): HookCommand[] {
 	return out;
 }
 
-/** フックの出力から拒否の理由を返す。通すなら null。JSON の無い exit 2 は壊れた命令とみなして通す（pi-hooks と同じ）。 */
+/** フックの出力から拒否の理由を返す。通すなら null。0・2 以外の終了は失敗として通し、JSON の無い exit 2 は壊れた命令とみなして通す（pi-hooks と同じ）。 */
 export function denyReason(stdout: string, code: number | null): string | null {
+	if (code !== 0 && code !== 2) return null;
 	let out: any = null;
 	try {
 		out = stdout ? JSON.parse(stdout) : null;

@@ -41,6 +41,14 @@ describe("hook-guards", () => {
 		expect(result).toEqual({ block: true, reason: "名前で止めないでください" });
 	});
 
+	test("matcher を省いたグループは全部のツールに当てる", async () => {
+		await writeFile(
+			join(dir, "hook.json"),
+			JSON.stringify({ hooks: { PreToolUse: [{ hooks: [{ type: "command", command: DENY }] }] } }),
+		);
+		expect((await load()({ toolName: "write", input: {} }, ctx(dir)))?.block).toBe(true);
+	});
+
 	test("フックへ Claude Code の形で渡す", async () => {
 		const seen = join(dir, "stdin.json");
 		await config([`cat > ${seen}`]);
@@ -81,6 +89,7 @@ describe("hook-guards", () => {
 		expect(denyReason('{"hookSpecificOutput":{"permissionDecision":"allow"}}', 0)).toBeNull();
 		expect(denyReason('{"reason":"r"}', 2)).toBe("r");
 		expect(denyReason("not json", 2)).toBeNull();
+		expect(denyReason('{"hookSpecificOutput":{"permissionDecision":"deny"}}', 1)).toBeNull(); // 失敗した命令は通す
 		expect(preToolUseCommands(join(dir, "none.json"), "bash")).toEqual([]);
 	});
 });
