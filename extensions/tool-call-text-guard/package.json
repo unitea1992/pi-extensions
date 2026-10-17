@@ -1,0 +1,12 @@
+{
+	"name": "pi-tool-call-text-guard",
+	"version": "0.1.0",
+	"description": "Pi extension: send the agent back when a tool call was emitted as plain text instead of being executed",
+	"license": "MIT",
+	"type": "module",
+	"main": "./src/index.ts",
+	"files": ["src", "README.md", "LICENSE"],
+	"pi": {
+		"extensions": ["./src/index.ts"]
+	}
+}

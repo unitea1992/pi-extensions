@@ -54,7 +54,9 @@ export default function doneGuard(pi: ExtensionAPI) {
 			reminders.set(path, count + 1);
 			return {
 				continue: true,
+				// entries は置き換えで渡るため、先に積まれた分（tool-call-text-guard など）を残す。
 				entries: [
+					...event.entries,
 					{
 						type: "custom_message" as const,
 						customType: CUSTOM_TYPE,

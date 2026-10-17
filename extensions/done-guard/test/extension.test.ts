@@ -124,3 +124,13 @@ describe("done-guard", () => {
 		expect((await settle(settleEvent("", { context: ctx }))).continue).toBe(true);
 	});
 });
+
+describe("done-guard と他の拡張の併用", () => {
+	test("先に積まれた entries を残す", async () => {
+		const settle = load().get("agent_before_settle")!;
+		const earlier = { type: "custom_message", customType: "tool-call-text", content: "x", display: true };
+		const result = await settle(settleEvent(`DONE_FILE: ${join(dir, "none.md")}`, { entries: [earlier] }));
+		expect(result.entries[0]).toBe(earlier);
+		expect(result.entries).toHaveLength(2);
+	});
+});
