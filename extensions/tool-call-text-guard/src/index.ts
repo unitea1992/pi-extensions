@@ -48,7 +48,10 @@ export default function toolCallTextGuard(pi: ExtensionAPI) {
 				reminders = 0;
 				return;
 			}
-			if (!BROKEN_CALL_PATTERN.test(textOf(message))) return;
+			if (!BROKEN_CALL_PATTERN.test(textOf(message))) {
+				reminders = 0; // 普通の完了で数え直す（連続の回数だけを数える）
+				return;
+			}
 			if (reminders >= MAX_REMINDERS) return;
 			reminders++;
 			return {

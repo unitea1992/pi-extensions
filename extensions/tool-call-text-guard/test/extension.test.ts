@@ -76,6 +76,13 @@ describe("tool-call-text-guard", () => {
 		expect(settle(broken()).continue).toBe(true);
 	});
 
+	test("普通の完了で数え直す", () => {
+		const settle = load().get("agent_before_settle")!;
+		for (let i = 0; i < MAX_REMINDERS; i++) settle(broken());
+		settle(settleEvent([assistant([{ type: "text", text: "終わりました" }])]));
+		expect(settle(broken()).continue).toBe(true);
+	});
+
 	test("session_start で数え直す", () => {
 		const handlers = load();
 		const settle = handlers.get("agent_before_settle")!;
