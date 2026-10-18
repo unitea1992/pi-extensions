@@ -1,0 +1,12 @@
+{
+	"name": "pi-image-window",
+	"version": "0.1.0",
+	"description": "Pi extension: keep only the most recent images in each model request by replacing older ones with placeholder text",
+	"license": "MIT",
+	"type": "module",
+	"main": "./src/index.ts",
+	"files": ["src", "README.md", "LICENSE"],
+	"pi": {
+		"extensions": ["./src/index.ts"]
+	}
+}
