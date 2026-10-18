@@ -10,7 +10,7 @@ Pi は会話の履歴の画像を毎回の要求にすべて載せます。GLM T
 
 - ファイル名は `read` などのツール呼び出し（`toolCallId`）の `path` 引数の basename から取ります。取れないときは user の添付なら「添付画像」、それ以外は「画像」になります。
 - 履歴の原本は変わりません。置き換えはその要求の写しだけで、セッションの記録や次回以降の読み直しに影響しません。
-- 既に壊れた会話（画像が51枚を超えて 400 で止まった物）も、この拡張が有効な状態で resume して「続けて」と送れば、次の要求から画像が絞られた状態で続きます。
+- 既に壊れた会話（画像が51枚を超えて 400 で止まったもの）も、この拡張が有効な状態で resume して「続けて」と送れば、次の要求から画像が絞られた状態で続きます。
 
 ### 設定
 
@@ -64,7 +64,7 @@ for i in range(1, 61):
 	img.save(f"/tmp/image-window-shots/shot-{i}.png")
 PY
 PI_IMAGE_WINDOW_DEBUG=1 pi -p --no-session -ne -e ./extensions/image-window/src/index.ts \
-	"/tmp/image-window-shots の shot-1.png から shot-60.png を順に read で読み、各ファイル名を1行ずつ /tmp/image-window-result.md に追記して終えて。" \
+	"次のフォルダの画像を番号順に read で読み、読んだファイル名を1行ずつ /tmp/image-window-result.md に追記して終えてください：/tmp/image-window-shots/shot-01.png から shot-60.png の60枚" \
 	2>&1 | grep 'provider request images'
 ```
 
