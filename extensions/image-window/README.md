@@ -61,11 +61,11 @@ os.makedirs("/tmp/image-window-shots", exist_ok=True)
 for i in range(1, 61):
 	img = Image.new("RGB", (200, 100), (100, 150, 200))
 	ImageDraw.Draw(img).text((20, 40), f"shot {i}", fill="black")
-	img.save(f"/tmp/image-window-shots/shot-{i}.png")
+	img.save(f"/tmp/image-window-shots/shot-{i:02d}.png")
 PY
 PI_IMAGE_WINDOW_DEBUG=1 pi -p --no-session -ne -e ./extensions/image-window/src/index.ts \
 	"次のフォルダの画像を番号順に read で読み、読んだファイル名を1行ずつ /tmp/image-window-result.md に追記して終えてください：/tmp/image-window-shots/shot-01.png から shot-60.png の60枚" \
-	2>&1 | grep 'provider request images'
+	2>&1 | grep -E 'images|400|error'
 ```
 
 出力の画像の数がずっと8以下で、終わりまで `400` が出なければOKです。
