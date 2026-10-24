@@ -51,6 +51,7 @@ describe("session_before_compact", () => {
 		expect(calls[0]?.[6]).toBe("low");
 		expect(calls[0]?.[2]).toBe("k");
 		expect(calls[0]?.[3]).toEqual({ h: "1" });
+		expect(typeof calls[0]?.[7]).toBe("function");
 	});
 
 	test("セッションの思考が既に低いとき、思考の無いモデルのときは何もしない", async () => {

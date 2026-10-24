@@ -43,7 +43,8 @@ export function createCompactionThinking(compactFn: typeof compact = piCompact) 
 					customInstructions,
 					signal,
 					level,
-					undefined,
+					// 登録済みのプロバイダや仮想モデルも Pi 本体と同じ経路で送る。
+					(m, context, options) => ctx.modelRegistry.streamSimple(m, context, options),
 					auth.env,
 				);
 				if (!result.summary.trim()) return;
