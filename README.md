@@ -10,6 +10,7 @@ Pi coding agent の任意拡張をまとめるリポジトリです。Pi本体�
 | [`tool-call-text-guard`](extensions/tool-call-text-guard/README.md) | ツールの呼び出しが実行されず本文に文字として出たまま終わろうとしたとき、2回まで差し戻す |
 | [`hook-guards`](extensions/hook-guards/README.md) | Claude Code の PreToolUse のフックをツールの前に流し、拒否なら止める。pi-hooks と違い、拒否のあとも Pi は止まらずに続ける |
 | [`image-window`](extensions/image-window/README.md) | モデルへ送る要求の画像を直近の枚数に絞り、古い画像を「画像を省略」の文字に置き換える。会話の画像が増えても GLM の1要求50枚の上限で止まらなくする |
+| [`compaction-thinking`](extensions/compaction-thinking/README.md) | 会話の圧縮の要約を、セッションより低い思考の強さ（既定 `low`）で書かせる。思考を max にしていても、要約で長く考えて数分ふさがらないようにする |
 
 ## インストール
 

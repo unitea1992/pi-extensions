@@ -1,0 +1,12 @@
+{
+	"name": "pi-compaction-thinking",
+	"version": "0.1.0",
+	"description": "Pi extension: write compaction summaries with a lower thinking level than the session's",
+	"license": "MIT",
+	"type": "module",
+	"main": "./src/index.ts",
+	"files": ["src", "README.md", "LICENSE"],
+	"pi": {
+		"extensions": ["./src/index.ts"]
+	}
+}
