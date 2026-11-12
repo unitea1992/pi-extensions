@@ -1,4 +1,4 @@
-import type { ExtensionAPI, compact } from "@earendil-works/pi-coding-agent";
+import type { compact, ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { lowerThan, readSettings } from "./settings.ts";
 
 function settingsOf(pi: ExtensionAPI): unknown {

@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import {
-	DEFAULT_KEEP_IMAGES,
 	countImagesInPayload,
+	DEFAULT_KEEP_IMAGES,
 	keepImagesFromSettings,
 	omitOldImages,
 	omittedImageText,

@@ -5,10 +5,16 @@
 	"description": "Optional extensions for the Pi coding agent",
 	"license": "MIT",
 	"type": "module",
-	"keywords": ["pi-package"],
-	"workspaces": ["extensions/*"],
+	"keywords": [
+		"pi-package"
+	],
+	"workspaces": [
+		"extensions/*"
+	],
 	"pi": {
-		"extensions": ["./extensions/*/src/index.ts"]
+		"extensions": [
+			"./extensions/*/src/index.ts"
+		]
 	},
 	"scripts": {
 		"typecheck": "bun --check",
@@ -17,7 +23,7 @@
 		"check": "bun run typecheck && bun run lint && bun test"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^1.9.4",
+		"@biomejs/biome": "^2.6.7",
 		"@earendil-works/pi-coding-agent": "1.5.2",
 		"bun-types": "^1.4.4",
 		"typescript": "^7.0.2"
